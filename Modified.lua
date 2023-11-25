@@ -241,7 +241,7 @@ local clicked = false
 local SearchHided = true
 local Notifications = Rayfield.Notifications
 
-local SelectedTheme = RayfieldLibrary.Theme[_G.Theme or "Yellow"]
+local SelectedTheme = RayfieldLibrary.Theme["Yellow"]
 Topbar.Search.ImageColor3 = SelectedTheme.SearchIcon
 Topbar.Hide.ImageColor3 = SelectedTheme.XIcon
 
@@ -2695,6 +2695,6 @@ function RayfieldLibrary:LoadConfiguration()
 	end
 end
 
-ChangeTheme(_G.Theme or "Default")
+ChangeTheme("Yellow")
 
 return RayfieldLibrary
