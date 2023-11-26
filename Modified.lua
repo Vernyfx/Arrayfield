@@ -1570,26 +1570,13 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 			local Paragraph = Elements.Template.Paragraph:Clone()
 			Paragraph.Title.Text = ParagraphSettings.Title
-			Paragraph.Title.RichText = true 
 			Paragraph.Content.Text = ParagraphSettings.Content
-			Paragraph.Content.RichText = true
 			Paragraph.Visible = true
+			Paragraph.Parent = TabPage
 
-			Tab.Elements[ParagraphSettings.Title] = {
-				type = 'paragraph',
-				element = Paragraph
-			}
-
-			if SectionParent or (ParagraphSettings.SectionParent and ParagraphSettings.SectionParent.Holder) then
-				Paragraph.Parent = TabPage
-			else
-				Paragraph.Parent = TabPage
-			end
-
-			local textSize = TextService:GetTextSize(Paragraph.Content.Text, Paragraph.Content.TextSize, Paragraph.Content.Font, Vector2.new(math.huge, math.huge))
-			Paragraph.Content.Size = UDim2.new(0, 438, 0, textSize.Y)
-			--Paragraph.Content.Position = UDim2.new(0,465, 0,76)
-			Paragraph.Size = UDim2.new(0,465, 0, textSize.Y + 40)
+			Paragraph.Content.Size = UDim2.new(0, 438, 0, Paragraph.Content.TextBounds.Y)
+			--Paragraph.Content.Position = UDim2.new(1, -10, 0,76)
+			Paragraph.Size = UDim2.new(1, -10, 0, Paragraph.Content.TextBounds.Y + 40)
 
 			Paragraph.BackgroundTransparency = 1
 			Paragraph.UIStroke.Transparency = 1
@@ -1603,13 +1590,10 @@ function RayfieldLibrary:CreateWindow(Settings)
 			TweenService:Create(Paragraph.UIStroke, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {Transparency = 0}):Play()
 			TweenService:Create(Paragraph.Title, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()	
 			TweenService:Create(Paragraph.Content, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {TextTransparency = 0}):Play()	
+
 			function ParagraphValue:Set(NewParagraphSettings)
 				Paragraph.Title.Text = NewParagraphSettings.Title
 				Paragraph.Content.Text = NewParagraphSettings.Content
-
-				local textSize = TextService:GetTextSize(Paragraph.Content.Text, Paragraph.Content.TextSize, Paragraph.Content.Font, Vector2.new(math.huge, math.huge))
-				Paragraph.Content.Size = UDim2.new(0, 438, 0, textSize.Y)
-				Paragraph.Size = UDim2.new(0,465, 0, textSize.Y + 40)
 			end
 
 			return ParagraphValue
