@@ -1565,7 +1565,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 		end
 
 		-- Paragraph
-		function Tab:CreateParagraph(ParagraphSettings,SectionParent)
+		function Tab:CreateParagraph(ParagraphSettings)
 			local ParagraphValue = {}
 
 			local Paragraph = Elements.Template.Paragraph:Clone()
@@ -1577,12 +1577,11 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 			Tab.Elements[ParagraphSettings.Title] = {
 				type = 'paragraph',
-				section = ParagraphSettings.SectionParent,
 				element = Paragraph
 			}
 
 			if SectionParent or (ParagraphSettings.SectionParent and ParagraphSettings.SectionParent.Holder) then
-				Paragraph.Parent = SectionParent.Holder or ParagraphSettings.SectionParent.Holder
+				Paragraph.Parent = TabPage
 			else
 				Paragraph.Parent = TabPage
 			end
