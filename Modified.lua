@@ -241,7 +241,7 @@ local clicked = false
 local SearchHided = true
 local Notifications = Rayfield.Notifications
 
-local SelectedTheme = RayfieldLibrary.Theme["Yellow"]
+local SelectedTheme = RayfieldLibrary.Theme["Default"]
 Topbar.Search.ImageColor3 = SelectedTheme.SearchIcon
 Topbar.Hide.ImageColor3 = SelectedTheme.XIcon
 
